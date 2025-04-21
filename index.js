@@ -83,15 +83,7 @@ async function scrapeLinkedInJobs(linkedinUrl, companyName) {
   
   console.log(`Scraping LinkedIn jobs for ${companyName} at ${jobsUrl}`);
   
-  const browser = await chromium.launch({
-    headless: true,
-    executablePath: chromiumExecutablePath,
-    args: [
-      '--no-sandbox',
-      '--disable-setuid-sandbox',
-      '--disable-dev-shm-usage'
-    ]
-  });
+  const browser = await getBrowser();
   const context = await browser.newContext({
     userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36',
     viewport: { width: 1280, height: 800 }
